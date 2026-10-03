@@ -14,6 +14,9 @@ topic set size 연구(평가 주제 수와 시스템 순위 안정성의 관계)
 - top-k 유지: 전체 상위 k개 집합의 최솟값이 나머지의 최댓값보다 엄격하게 높음.
 - 쌍 분리(95%): 두 시스템 차이의 부트스트랩 분포에서 P(차이 > 0) ≥ 0.975
   (양측 95% 백분위 구간이 0을 포함하지 않음과 같은 기준).
+- 필요한 질문 수: 관측된 차이(δ)와 불일치율이 참값이라고 가정했을 때 위 기준을 넘는 n이다.
+  δ√n/σ ≈ 1.96 인 지점이므로 검정력 약 50% 기준에 해당한다(그 n으로 다시 평가하면 절반쯤만
+  유의하게 갈린다). 검정력 80% 기준 n은 ((1.96 + 0.84)·σ/δ)² 정규 근사로 따로 낸다.
 
 해석적 교차 검증
 - 정확해: 복원추출 n건에서 두 시스템 차이의 합 S는 질문별 차이 d ∈ {+1, 0, -1}의
@@ -36,6 +39,8 @@ from scipy import stats as _st
 from rag_eval.stats import wilson_interval
 
 Z975 = 1.959963984540054
+# 부동소수 반올림 허용 오차 (web/flip.js 와 같은 값)
+EPS = 1e-12
 
 
 # ---------------------------------------------------------------- 정확해·근사
@@ -68,12 +73,18 @@ def normal_hold_prob(n: int, delta: float, discordance: float) -> float:
     return float(1 - _st.norm.cdf((0.5 - n * delta) / math.sqrt(var * n)))
 
 
-def normal_n_required(delta: float, discordance: float, z: float = Z975) -> float:
-    """두 시스템을 양측 95%로 가르는 데 필요한 질문 수의 정규 근사 (z·σ/δ)²."""
+def normal_n_required(
+    delta: float, discordance: float, power: float = 0.5, z: float = Z975
+) -> float:
+    """관측된 차이가 참값이라고 가정했을 때 양측 95% 검정이 ``power`` 확률로 두 시스템을 가르는
+    질문 수의 정규 근사 ((z + z_power)·σ/δ)². power=0.5 이면 z_power = 0 → (z·σ/δ)²."""
+    if not 0 < power < 1:
+        raise ValueError("power는 (0, 1) 범위여야 합니다")
     if delta <= 0:
         return math.inf
     var = discordance - delta * delta
-    return (z * math.sqrt(max(var, 0.0)) / delta) ** 2
+    z_power = float(_st.norm.ppf(power))
+    return ((z + z_power) * math.sqrt(max(var, 0.0)) / delta) ** 2
 
 
 def _first_parity(p_pos: float, p_neg: float, target: float, parity: int, n_max: int) -> int | None:
@@ -128,8 +139,10 @@ def flip_probability(
       리더보드에서는 이 값이 분산을 결정한다. 주지 않으면 두 시스템이 질문별로 독립이라고 보고
       ``accuracy`` (앞선 쪽 정확도, 기본 0.5 + gap/2)로부터 계산한다.
     - 반환: p_reverse = P(뒤진 쪽이 엄격히 앞섬), p_tie = P(동점), p_flip = p_reverse + p_tie/2
-      (동점은 반반으로 갈린다고 봄), p_flip_normal = 정규 근사, n_95 = 양측 95%로 가르는 데
-      필요한 n의 정확해·정규 근사.
+      (동점은 반반으로 갈린다고 봄), p_flip_normal = 정규 근사.
+    - n_95_exact / n_95_normal: gap·불일치율이 참값이라고 가정했을 때 P(우위) ≥ 0.975 가 되는 n
+      (양측 95% 분리, 검정력 약 50% 기준)의 정확해·정규 근사.
+    - n_power80_normal: 같은 가정에서 검정력 80% 기준 n (정규 근사).
     """
     if n < 1:
         raise ValueError("n은 1 이상이어야 합니다")
@@ -142,10 +155,11 @@ def flip_probability(
         if not (0 <= pb and pa <= 1):
             raise ValueError("accuracy와 gap 조합이 [0, 1]을 벗어납니다")
         discordance = pa * (1 - pb) + pb * (1 - pa)
-    if not gap <= discordance <= 1:
+    if not gap - EPS <= discordance <= 1 + EPS:
         raise ValueError("discordance는 gap 이상 1 이하여야 합니다")
+    discordance = min(max(discordance, gap), 1.0)
     p_pos = (discordance + gap) / 2
-    p_neg = (discordance - gap) / 2
+    p_neg = max((discordance - gap) / 2, 0.0)
     hold, tie, rev = paired_sum_probs(n, p_pos, p_neg)
     var = discordance - gap * gap
     flip_normal = float(_st.norm.cdf(-gap * math.sqrt(n / var))) if var > 0 else 0.0
@@ -160,6 +174,7 @@ def flip_probability(
         "p_flip_normal": flip_normal,
         "n_95_exact": exact_n_required(p_pos, p_neg),
         "n_95_normal": normal_n_required(gap, discordance),
+        "n_power80_normal": normal_n_required(gap, discordance, power=0.8),
     }
 
 
@@ -313,6 +328,15 @@ def pair_analysis(
                 "n_sim_grid": sim_n,
                 "n_exact": exact_n_required(p_pos, p_neg, target),
                 "n_normal": normal_n_required(delta, disc),
+                "n_power80_normal": normal_n_required(delta, disc, power=0.8),
+                # 전체 질문에서 관측된 불일치 쌍에 대한 McNemar 정확 검정 (양측)
+                "mcnemar_p": float(
+                    _st.binomtest(int(round(p_neg * len(d))), int(round(disc * len(d))), 0.5).pvalue
+                )
+                if disc > 0
+                else 1.0,
+                "n_pos": int(round(p_pos * len(d))),
+                "n_neg": int(round(p_neg * len(d))),
             }
         )
     return out

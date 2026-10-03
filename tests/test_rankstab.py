@@ -153,3 +153,42 @@ def test_pair_analysis_and_approx_check():
     assert [r["n"] for r in rows] == [1, 3, 101]
     for r in rows:
         assert r["sim"] == pytest.approx(r["exact"], abs=0.03)
+
+
+def test_normal_n_required_power():
+    # 검정력 50%는 z_power = 0 → 기존 (1.96·σ/δ)² 와 같음
+    assert normal_n_required(0.1, 0.3, power=0.5) == pytest.approx(normal_n_required(0.1, 0.3))
+    # 검정력 80%: δ=0.1, 불일치 0.3 → σ²=0.29, n = ((1.959964 + 0.841621)·√0.29 / 0.1)² ≈ 227.6
+    want = ((1.959963984540054 + 0.8416212335729143) * math.sqrt(0.29) / 0.1) ** 2
+    assert normal_n_required(0.1, 0.3, power=0.8) == pytest.approx(want)
+    assert normal_n_required(0.1, 0.3, power=0.8) == pytest.approx(227.6175, abs=1e-3)
+    with pytest.raises(ValueError):
+        normal_n_required(0.1, 0.3, power=1.0)
+    r = flip_probability(300, gap=0.01, discordance=0.05)
+    assert r["n_power80_normal"] == pytest.approx(normal_n_required(0.01, 0.05, power=0.8))
+
+
+def test_flip_probability_float_rounding_regression():
+    # accuracy=1.0, gap=0.1 → 독립 가정 불일치율이 부동소수로 gap보다 아주 조금 작게 나올 수 있다
+    r = flip_probability(10, 0.1, accuracy=1.0)
+    assert r["discordance"] == pytest.approx(0.1)
+    # 불일치 = gap 이면 아래 쪽만 맞힌 질문이 없다 → 역전 불가능, 동점은 불일치 질문이 0개일 때만
+    assert r["p_reverse"] == 0.0
+    assert r["p_tie"] == pytest.approx(0.9**10)
+    flip_probability(10, 0.1, discordance=0.1 - 1e-15)  # 허용 오차 안
+    with pytest.raises(ValueError):
+        flip_probability(10, 0.1, discordance=0.1 - 1e-6)
+
+
+def test_pair_analysis_mcnemar_known():
+    # a만 맞힘 9문항, b만 맞힘 6문항, 둘 다 맞힘 5문항 → McNemar 정확 p = 2·Σ_{k≤6} C(15,k) / 2^15
+    a = np.array([1.0] * 9 + [0.0] * 6 + [1.0] * 5)
+    b = np.array([0.0] * 9 + [1.0] * 6 + [1.0] * 5)
+    X = np.vstack([a, b])
+    res = rank_stability(X, ["a", "b"], ns=[20], n_boot=50)
+    pa = pair_analysis(X, ["a", "b"], res)[0]
+    want = 2 * sum(math.comb(15, k) for k in range(7)) / 2**15
+    assert (pa["n_pos"], pa["n_neg"]) == (9, 6)
+    assert pa["mcnemar_p"] == pytest.approx(want)
+    assert pa["mcnemar_p"] == pytest.approx(0.6072, abs=1e-4)
+    assert pa["n_power80_normal"] == pytest.approx(normal_n_required(3 / 20, 15 / 20, power=0.8))
