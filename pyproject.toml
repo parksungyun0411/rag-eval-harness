@@ -2,6 +2,7 @@
 name = "rag-eval-harness"
 version = "0.1.0"
 description = "도메인 독립 검색·RAG 평가 하네스: 랭킹 지표, 신뢰구간·대응 검정, 실험 매트릭스, 골든셋 비교"
+readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "박성윤" }]
 requires-python = ">=3.10"
