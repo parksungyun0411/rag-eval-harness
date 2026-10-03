@@ -228,3 +228,67 @@ def render_judge_report(aggregate: Mapping[str, Any], out_dir: str | Path) -> Pa
     path = out / "judge.md"
     path.write_text("\n".join(parts), encoding="utf-8")
     return path
+
+
+def render_stability_report(result: Mapping[str, Any], out_dir: str | Path) -> Path:
+    """질의 수별 순위 일치율 표와 곡선."""
+    from rag_eval.stability import min_n_for
+
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    sampling = "복원추출(부트스트랩)" if result["replace"] else "비복원추출(부분집합)"
+    need = min_n_for(result, 0.9)
+    parts = [
+        f"# 질의 수에 따른 설정 순위 안정성 — `{result['golden']}` · {result['metric']}",
+        "",
+        f"생성: {_stamp()} · 설정 {len(result['configs'])}개 · 전체 질의 {result['n_queries']}건 · "
+        f"{sampling} {result['n_boot']}회 · seed {result['seed']}",
+        "",
+        "전체 질의 순위: " + " > ".join(f"`{c}`" for c in result["full_order"]),
+        "",
+        "exact = 순위 전체 일치 비율, top1 = 1위 일치 비율 (95% Wilson 구간), "
+        "pairwise = 설정 쌍 순서 일치 비율의 평균 (95% 백분위 구간)",
+        "",
+    ]
+    body = [
+        [
+            str(r["n"]),
+            _fmt(r["exact"]),
+            f"[{_fmt(r['exact_ci'][0])}, {_fmt(r['exact_ci'][1])}]",
+            _fmt(r["top1"]),
+            f"[{_fmt(r['top1_ci'][0])}, {_fmt(r['top1_ci'][1])}]",
+            _fmt(r["pairwise"]),
+            f"[{_fmt(r['pairwise_interval'][0])}, {_fmt(r['pairwise_interval'][1])}]",
+        ]
+        for r in result["results"]
+    ]
+    parts += [
+        _table(["n", "exact", "exact CI", "top1", "top1 CI", "pairwise", "pairwise 구간"], body),
+        "",
+        "exact 일치율 구간 하한이 0.9 이상이 되는 최소 n: "
+        + (f"{need}" if need is not None else "격자 안에 없음"),
+        "",
+    ]
+    ns = [r["n"] for r in result["results"]]
+    fig, ax = plt.subplots(figsize=(7, 4))
+    for key, label in (("exact", "exact"), ("top1", "top1")):
+        ys = [r[key] for r in result["results"]]
+        lo = [r[f"{key}_ci"][0] for r in result["results"]]
+        hi = [r[f"{key}_ci"][1] for r in result["results"]]
+        ax.plot(ns, ys, marker="o", label=label)
+        ax.fill_between(ns, lo, hi, alpha=0.2)
+    ax.plot(ns, [r["pairwise"] for r in result["results"]], marker="s", label="pairwise")
+    ax.set_xlabel("n (queries)")
+    ax.set_ylabel("agreement with full-set ordering")
+    ax.set_ylim(0, 1.02)
+    ax.grid(alpha=0.3)
+    ax.legend(fontsize=8)
+    fig.tight_layout()
+    slug = f"{result['golden']}_{result['metric'].replace('@', '_at_')}"
+    img = f"stability_{slug}.png"
+    fig.savefig(out / img, dpi=150)
+    plt.close(fig)
+    parts += [f"![순위 안정성]({img})", ""]
+    path = out / f"stability_{slug}.md"
+    path.write_text("\n".join(parts), encoding="utf-8")
+    return path

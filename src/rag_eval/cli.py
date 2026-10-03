@@ -50,9 +50,33 @@ def _cmd_judge(args: argparse.Namespace) -> None:
     print(f"[judge] {len(judgments)}건 → {args.out}")
 
 
+def _cmd_stability(args: argparse.Namespace) -> None:
+    from rag_eval.stability import stability_from_rows
+
+    rows = list(read_jsonl(args.per_query))
+    ns = [int(x) for x in args.ns.split(",")] if args.ns else None
+    result = stability_from_rows(
+        rows,
+        args.golden,
+        args.metric,
+        ns=ns,
+        n_boot=args.n_boot,
+        seed=args.seed,
+        replace=not args.subsample,
+    )
+    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.out).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[stability] {args.golden} · {args.metric} → {args.out}")
+
+
 def _cmd_report(args: argparse.Namespace) -> None:
     from rag_eval.judge import aggregate_judgments
-    from rag_eval.report import render_golden_report, render_judge_report, render_matrix_report
+    from rag_eval.report import (
+        render_golden_report,
+        render_judge_report,
+        render_matrix_report,
+        render_stability_report,
+    )
 
     written = []
     if args.per_query:
@@ -68,8 +92,13 @@ def _cmd_report(args: argparse.Namespace) -> None:
         written.append(
             render_judge_report(aggregate_judgments(list(read_jsonl(args.judgments))), args.out)
         )
+    for path in args.stability or []:
+        result = json.loads(Path(path).read_text(encoding="utf-8"))
+        written.append(render_stability_report(result, args.out))
     if not written:
-        raise SystemExit("--per-query, --golden, --judgments 중 하나 이상이 필요합니다")
+        raise SystemExit(
+            "--per-query, --golden, --judgments, --stability 중 하나 이상이 필요합니다"
+        )
     for p in written:
         print(f"[report] {p}")
 
@@ -101,10 +130,22 @@ def main(argv: list[str] | None = None) -> None:
     j.add_argument("--seed", type=int, default=42)
     j.set_defaults(func=_cmd_judge)
 
+    st = sub.add_parser("stability", help="질의 수에 따른 설정 순위 안정성(부트스트랩)")
+    st.add_argument("--per-query", required=True)
+    st.add_argument("--golden", default="real")
+    st.add_argument("--metric", default="ndcg@10")
+    st.add_argument("--ns", help="질의 수 격자, 쉼표 구분 (기본: 10부터 전체까지)")
+    st.add_argument("--n-boot", type=int, default=1000)
+    st.add_argument("--seed", type=int, default=0)
+    st.add_argument("--subsample", action="store_true", help="복원추출 대신 비복원 부분집합")
+    st.add_argument("--out", required=True)
+    st.set_defaults(func=_cmd_stability)
+
     r = sub.add_parser("report", help="마크다운 표·그림 생성")
     r.add_argument("--per-query")
     r.add_argument("--golden")
     r.add_argument("--judgments")
+    r.add_argument("--stability", action="append", help="stability 결과 JSON (여러 번 지정 가능)")
     r.add_argument("--baseline")
     r.add_argument("--order", help="설정 표시 순서, 쉼표 구분")
     r.add_argument("--out", default="reports")
