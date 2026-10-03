@@ -1,7 +1,7 @@
 [project]
 name = "rag-eval-harness"
 version = "0.1.0"
-description = "도메인 독립 검색·RAG 평가 하네스: 랭킹 지표, 신뢰구간·대응 검정, 실험 매트릭스, 골든셋 비교"
+description = "도메인 독립 검색·RAG 평가 하네스: 랭킹 지표, 신뢰구간·대응 검정, 실험 매트릭스, 순위 안정성, 골든셋 비교, 교체 가능한 검색 구성 요소"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "박성윤" }]
@@ -10,10 +10,14 @@ dependencies = [
     "numpy>=1.26",
     "scipy>=1.11",
     "matplotlib>=3.8",
+    "pyyaml>=6",
 ]
 
 [project.optional-dependencies]
 llm = ["anthropic>=0.40", "httpx>=0.27"]
+kiwi = ["kiwipiepy>=0.18"]
+models = ["sentence-transformers>=3.0", "torch>=2.3"]
+opensearch = ["opensearch-py>=2.4"]
 
 [project.scripts]
 rag-eval = "rag_eval.cli:main"
