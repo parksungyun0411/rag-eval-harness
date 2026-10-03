@@ -153,6 +153,10 @@ def run(
             "n_sim_grid",
             "n_exact",
             "n_normal",
+            "n_power80_normal",
+            "n_upper_only",
+            "n_lower_only",
+            "mcnemar_p",
         ],
         [
             [
@@ -165,6 +169,10 @@ def run(
                 p["n_sim_grid"] if p["n_sim_grid"] is not None else "",
                 p["n_exact"] if p["n_exact"] is not None else "",
                 p["n_normal"],
+                p["n_power80_normal"],
+                p["n_pos"],
+                p["n_neg"],
+                p["mcnemar_p"],
             ]
             for p in pairs
         ],
@@ -284,10 +292,12 @@ def _plots(cm, overall, pairs, approx, domain_curves, sub: Path) -> None:
     labels = [f"{i + 1}-{i + 2}" for i in range(len(pairs))]
     exact = [p["n_exact"] if p["n_exact"] is not None else np.nan for p in pairs]
     normal = [p["n_normal"] for p in pairs]
+    power80 = [p["n_power80_normal"] for p in pairs]
     x = np.arange(len(pairs))
     fig, ax = plt.subplots(figsize=(9, 4))
-    ax.bar(x - 0.2, exact, width=0.4, label="exact (bootstrap distribution)")
-    ax.bar(x + 0.2, normal, width=0.4, label="normal approx")
+    ax.bar(x - 0.27, exact, width=0.27, label="~50% power, exact")
+    ax.bar(x, normal, width=0.27, label="~50% power, normal approx")
+    ax.bar(x + 0.27, power80, width=0.27, label="80% power, normal approx")
     ax.axhline(
         cm.X.shape[1],
         color="gray",
@@ -299,7 +309,7 @@ def _plots(cm, overall, pairs, approx, domain_curves, sub: Path) -> None:
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=90, fontsize=7)
     ax.set_xlabel("adjacent pair (overall rank i vs i+1)")
-    ax.set_ylabel("questions needed to separate at 95%")
+    ax.set_ylabel("questions to separate at 95%\n(observed gap taken as true)")
     ax.grid(alpha=0.3, axis="y")
     ax.legend(fontsize=8)
     fig.tight_layout()
@@ -400,7 +410,9 @@ def _render_report(cm, lb_rows, overall, pairs, approx, domain_curves, corr_rows
         "## 2. 질문 수에 따른 전체 순위 안정성",
         "",
         f"질문 n건을 {B}회 복원추출해 매긴 순위를 300문항 순위와 비교했습니다. "
-        "tau 구간은 반복값의 2.5~97.5 백분위, 확률 구간은 Wilson 95%(반복 수에서 오는 추정 오차)입니다. "
+        "tau 구간은 반복값의 2.5~97.5 백분위입니다. "
+        "확률 옆 구간은 반복 횟수에서 오는 몬테카를로 오차(Wilson 95%)일 뿐이며, "
+        "질문 표본 자체의 불확실성을 나타내지 않습니다. "
         "'유지'는 엄격한 우위만 셉니다(동점은 유지 아님). 원자료: `rank_stability/curve_overall.csv`",
         "",
     ]
@@ -414,7 +426,7 @@ def _render_report(cm, lb_rows, overall, pairs, approx, domain_curves, corr_rows
                 _f(1 - c["top1_held"]),
                 f"{_f(c['top3_held'])}" if "top3_held" in c else "—",
                 f"{_f(c['top5_held'])}" if "top5_held" in c else "—",
-                f"{_f(c['order_held'])}",
+                f"{_f(c['order_held'], 4)}",
             ]
         )
     p += [
@@ -422,7 +434,7 @@ def _render_report(cm, lb_rows, overall, pairs, approx, domain_curves, corr_rows
             [
                 "n",
                 "Kendall tau-b [95%]",
-                "1위 유지 [95%]",
+                "1위 유지 [반복 오차 95%]",
                 "1위 바뀜",
                 "top-3 집합 유지",
                 "top-5 집합 유지",
@@ -437,10 +449,13 @@ def _render_report(cm, lb_rows, overall, pairs, approx, domain_curves, corr_rows
         "",
         "## 3. 인접 순위 쌍을 가르는 데 필요한 질문 수",
         "",
-        "전체 순위에서 바로 이웃한 두 시스템마다, 차이의 부트스트랩 분포에서 P(위 시스템이 엄격히 앞섬) ≥ 0.975가 "
-        "되는(양측 95%로 갈리는) 질문 수입니다. "
-        "'격자'는 시뮬레이션 격자에서 그 n부터 끝까지 기준을 넘는 첫 값, '정확해'는 삼항 분포로 계산한 값, "
-        "'정규 근사'는 (1.96·σ/δ)²입니다(정확해 탐색 상한 20,000). 정확해·정규 근사가 300을 넘는 값은 같은 질문 분포를 가정한 외삽입니다. "
+        "전체 순위에서 바로 이웃한 두 시스템마다, 관측된 차이와 불일치율이 참값이라고 가정했을 때 "
+        "P(위 시스템이 엄격히 앞섬) ≥ 0.975가 되는(양측 95%로 갈리는) 질문 수입니다. "
+        "이 기준은 δ√n/σ ≈ 1.96 인 지점이라 검정력 약 50%에 해당합니다(그 n으로 새로 평가하면 절반쯤만 유의하게 갈림). "
+        "검정력 80% 기준은 ((1.96 + 0.84)·σ/δ)² 정규 근사로 따로 적었습니다. "
+        "'격자'는 시뮬레이션 격자에서 그 n부터 끝까지 기준을 넘는 첫 값, '정확해'는 삼항 분포로 계산한 값입니다(탐색 상한 20,000). "
+        "300을 넘는 값은 같은 질문 분포를 가정한 외삽입니다. "
+        "'위만/아래만'은 300문항 중 한쪽만 맞힌 질문 수이고, McNemar p는 그 불일치 쌍에 대한 양측 정확 검정입니다. "
         "원자료: `rank_stability/adjacent_pairs.csv`",
         "",
     ]
@@ -453,14 +468,29 @@ def _render_report(cm, lb_rows, overall, pairs, approx, domain_curves, corr_rows
                 pr["lower"],
                 _f(pr["gap"]),
                 _f(pr["discordance"]),
+                f"{pr['n_pos']}/{pr['n_neg']}",
+                "<0.0001" if pr["mcnemar_p"] < 1e-4 else _f(pr["mcnemar_p"], 4),
                 str(pr["n_sim_grid"]) if pr["n_sim_grid"] is not None else f">{Q}",
                 str(pr["n_exact"]) if pr["n_exact"] is not None else ">20000",
                 f"{pr['n_normal']:.0f}" if math.isfinite(pr["n_normal"]) else "—",
+                f"{pr['n_power80_normal']:.0f}" if math.isfinite(pr["n_power80_normal"]) else "—",
             ]
         )
     p += [
         _table(
-            ["순위", "위", "아래", "정확도 차", "불일치율", "격자(≤300)", "정확해", "정규 근사"],
+            [
+                "순위",
+                "위",
+                "아래",
+                "정확도 차",
+                "불일치율",
+                "위만/아래만",
+                "McNemar p",
+                "검정력 50%: 격자(≤300)",
+                "검정력 50%: 정확해",
+                "검정력 50%: 정규 근사",
+                "검정력 80%: 정규 근사",
+            ],
             body,
         ),
         "",
@@ -585,7 +615,13 @@ def _write_web(web_dir: Path, cm, lb_rows, overall, pairs, domain_curves, corr_r
             s: "".join(str(int(v)) for v in cm.X[i]) for i, s in enumerate(cm.systems)
         },
         "pairs": [
-            {**p, "n_normal": p["n_normal"] if math.isfinite(p["n_normal"]) else None}
+            {
+                **p,
+                "n_normal": p["n_normal"] if math.isfinite(p["n_normal"]) else None,
+                "n_power80_normal": (
+                    p["n_power80_normal"] if math.isfinite(p["n_power80_normal"]) else None
+                ),
+            }
             for p in pairs
         ],
     }

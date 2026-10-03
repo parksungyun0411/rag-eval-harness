@@ -12,7 +12,7 @@
 | `rank_stability/leaderboard.csv` | 정확도, Wilson 95% 구간, 도메인별 정확도 |
 | `rank_stability/curve_overall.csv` | 질문 수 n별 Kendall tau, 1위·top-3·top-5·순위 전체 유지 확률 |
 | `rank_stability/curve_domain.csv` | 도메인별 같은 곡선 (n ≤ 60) |
-| `rank_stability/adjacent_pairs.csv` | 인접 순위 쌍별 정확도 차, 불일치율, 95%로 가르는 데 필요한 n(격자·정확해·정규 근사) |
+| `rank_stability/adjacent_pairs.csv` | 인접 순위 쌍별 정확도 차, 불일치율, 한쪽만 맞힌 질문 수, McNemar 정확 p, 관측 차이를 참값으로 가정한 95% 분리 n(검정력 약 50%: 격자·정확해·정규 근사, 검정력 80%: 정규 근사) |
 | `rank_stability/approx_check.csv` | 쌍 × n 마다 시뮬레이션·정확해·정규 근사 |
 | `rank_stability/domain_best_share.csv` | 도메인별 각 시스템의 1위 확률 (n = 60 복원추출) |
 | `rank_stability/domain_rank_corr.csv` | 도메인 순위와 전체 순위의 Kendall tau, 도메인 1위 |
