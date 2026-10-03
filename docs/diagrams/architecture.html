@@ -24,33 +24,25 @@ body{font-family:"Apple SD Gothic Neo","Noto Sans KR",-apple-system,sans-serif;-
 .ext{background:#f1f3f5;border-style:dashed}
 .note{font-size:11.5px;color:#7a8390;margin-top:14px}
 </style></head><body><div class="d">
-<div class="t"><b>rag-eval-harness</b> · 검색 구성부터 분석까지</div>
-<div class="row"><div class="lab"><div class="en">CONSUMER</div><div class="ko">소비 프로젝트</div></div>
-<div class="lane"><div class="box ext g"><div class="n">실제 질의 골든셋</div><div class="s">queries.jsonl · qrels.jsonl</div></div>
-<div class="box ext g"><div class="n">코퍼스</div><div class="s">docids · texts</div></div>
-<div class="box ext g"><div class="n">검색 설정 YAML</div><div class="s">dense · lexical · rerank 조합</div></div></div></div>
+<div class="t"><b>rag-eval-harness</b> · 대표 실험: 한국어 RAG 리더보드 순위 안정성</div>
+<div class="row"><div class="lab"><div class="en">DATA</div><div class="ko">공개 데이터</div></div>
+<div class="lane"><div class="box ext g"><div class="n">allganize/RAG-Evaluation-Dataset-KO</div><div class="s">Hugging Face · MIT · 고정 리비전 + SHA-256</div></div><span class="ar">→</span>
+<div class="box g"><div class="n">정답 행렬</div><div class="s">시스템 23 × 질문 300 (O/X → 1/0) · 도메인 5</div></div></div></div>
 <div class="down">↓</div>
-<div class="row"><div class="lab"><div class="en">RETRIEVE</div><div class="ko">검색 구성 요소</div></div>
-<div class="lane"><div style="display:flex;flex-direction:column;gap:8px;flex:0 0 230px">
-<div class="box lex"><div class="n">Kiwi + BM25</div><div class="s">프로세스 내 · OpenSearch 선택</div></div>
-<div class="box den"><div class="n">dense</div><div class="s">sentence-transformers · 전수 탐색</div></div></div>
-<span class="ar">→</span><div class="box hyb g"><div class="n">RRF 하이브리드</div><div class="s">순위만 결합</div></div>
-<span class="ar">→</span><div class="box rr g"><div class="n">크로스인코더 리랭커</div><div class="s">상위 후보만 재정렬</div></div>
-<div class="box"><div class="n">RetrievalStack</div><div class="s">YAML → 이름별 팩토리</div></div></div></div>
+<div class="row"><div class="lab"><div class="en">ANALYZE</div><div class="ko">순위 안정성</div></div>
+<div class="lane"><div class="box den g"><div class="n">부트스트랩</div><div class="s">n별 Kendall tau · 1위 유지 · top-k · 순위 전체</div></div>
+<div class="box hyb g"><div class="n">정확해</div><div class="s">쌍별 차이 = 삼항 분포 합</div></div>
+<div class="box lex g"><div class="n">정규 근사</div><div class="s">McNemar식 (z·σ/δ)²</div></div>
+<div class="box ev g"><div class="n">도메인별</div><div class="s">도메인 1위 확률 · 전체 순위와 tau</div></div></div></div>
 <div class="down">↓</div>
-<div class="row"><div class="lab"><div class="en">GENERATE</div><div class="ko">생성</div></div>
-<div class="lane"><div class="box hyb g"><div class="n">synth</div><div class="s">코퍼스 표본 → LLM 합성 질의 골든셋</div></div>
-<div class="box"><div class="n">LLMProvider</div><div class="s">Anthropic · OpenAI 호환</div></div>
-<div class="box hyb g"><div class="n">judge</div><div class="s">답변 표본 → 근거성·정확성·유용성</div></div></div></div>
+<div class="row"><div class="lab"><div class="en">OUTPUT</div><div class="ko">산출물</div></div>
+<div class="lane"><div class="box g"><div class="n">reports/REPORT.md</div><div class="s">표 · 그림 · 원자료 CSV · 재현 정보</div></div><span class="ar">→</span>
+<div class="box rr g"><div class="n">web/ 정적 화면</div><div class="s">리더보드 · 곡선 · 역전 확률 계산기(JS)</div></div>
+<div class="box"><div class="n">FastAPI</div><div class="s">/api/leaderboard · stability · flip</div></div></div></div>
 <div class="down">↓</div>
-<div class="row"><div class="lab"><div class="en">RUN</div><div class="ko">실행</div></div>
-<div class="lane"><div class="box den g"><div class="n">run_matrix</div><div class="s">골든셋 × 설정 전 조합 · 설정별 모델 1회 적재</div></div><span class="ar">→</span>
-<div class="box"><div class="n">per_query.jsonl</div><div class="s">질의별 hit·recall·MRR·nDCG·mAP·지연</div></div></div></div>
-<div class="down">↓</div>
-<div class="row"><div class="lab"><div class="en">ANALYZE</div><div class="ko">분석</div></div>
-<div class="lane"><div class="box ev g"><div class="n">compare</div><div class="s">골든셋 간 점수 차 · 순위 상관</div></div>
-<div class="box ev g"><div class="n">stability</div><div class="s">질의 수별 순위 일치율 · 부트스트랩</div></div>
-<div class="box ev g"><div class="n">stats</div><div class="s">Wilson · McNemar</div></div><span class="ar">→</span>
-<div class="box"><div class="n">reports/</div><div class="s">마크다운 표 · 그림</div></div></div></div>
-<div class="note">점선 상자는 소비 프로젝트가 제공. 검색 구성 요소는 선택 사용이며, 매트릭스는 search(query, k) 규약만 요구.</div>
+<div class="row"><div class="lab"><div class="en">LIBRARY</div><div class="ko">재사용 구성 요소</div></div>
+<div class="lane"><div class="box g"><div class="n">metrics · stats</div><div class="s">hit·recall·MRR·nDCG·mAP · Wilson · McNemar</div></div>
+<div class="box g"><div class="n">run_matrix · retrieval</div><div class="s">BM25·dense·RRF·리랭커 · 설정 → 검색기</div></div>
+<div class="box ext g"><div class="n">골든셋 2종 비교</div><div class="s">실제 대 합성 질의 · LLM 판정 (측정 전)</div></div></div></div>
+<div class="note">점선 상자는 외부 데이터 또는 아직 측정하지 않은 보조 실험.</div>
 </div></body></html>
