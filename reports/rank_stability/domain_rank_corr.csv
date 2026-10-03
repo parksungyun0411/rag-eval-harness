@@ -1,0 +1,6 @@
+domain,kendall_tau_vs_overall,p_value,winners,winner_accuracy
+finance,0.817716,0.000000,Alli (claude3.5-sonnet),0.850000
+public,0.903731,0.000000,Alli (claude3.5-sonnet),0.983333
+medical,0.673524,0.000009,Alli (claude3-opus),0.900000
+law,0.831433,0.000000,Alli (claude3.5-sonnet),0.766667
+commerce,0.678956,0.000008,Upstage (gpt-4-turbo),0.816667

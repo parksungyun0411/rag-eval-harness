@@ -1,0 +1,116 @@
+domain,system,accuracy,best_share_n60
+finance,Alli (gpt-4-turbo),0.783333,0.004905
+finance,Alli (gpt-4),0.833333,0.144263
+finance,Alli (claude3-opus),0.816667,0.046880
+finance,Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),0.683333,0.000025
+finance,Alli (Llama-3-Alpha-Ko-8B-Instruct),0.533333,0.000000
+finance,Alli (KONI-Llama3-8B-Instruct),0.683333,0.000000
+finance,Alli (claude3.5-sonnet),0.850000,0.684203
+finance,Alli (gpt-4o),0.800000,0.062620
+finance,Alli (gpt-4o-mini),0.750000,0.000208
+finance,Alli (alpha-ko-202411-32B),0.800000,0.055053
+finance,Langchain (gpt-4-turbo),0.616667,0.000000
+finance,Langchain (gpt-3.5-turbo),0.400000,0.000000
+finance,OpenAI Assistant (gpt-4-turbo),0.533333,0.000000
+finance,OpenAI Assistant (gpt-4),0.716667,0.001842
+finance,Cohere (command-r),0.500000,0.000000
+finance,Cohere (command-r-plus),0.483333,0.000000
+finance,Anything LLM (gpt-4-turbo),0.266667,0.000000
+finance,Anything LLM (gpt-3.5-turbo),0.133333,0.000000
+finance,Anything LLM (claude3-opus),0.266667,0.000000
+finance,Upstage (gpt-3.5-turbo),0.500000,0.000000
+finance,Upstage (gpt-4-turbo),0.616667,0.000000
+finance,Upstage (gpt-4),0.600000,0.000000
+finance,Upstage (solar),0.600000,0.000000
+public,Alli (gpt-4-turbo),0.900000,0.002177
+public,Alli (gpt-4),0.850000,0.002123
+public,Alli (claude3-opus),0.950000,0.064530
+public,Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),0.766667,0.000000
+public,Alli (Llama-3-Alpha-Ko-8B-Instruct),0.550000,0.000000
+public,Alli (KONI-Llama3-8B-Instruct),0.700000,0.000000
+public,Alli (claude3.5-sonnet),0.983333,0.924630
+public,Alli (gpt-4o),0.900000,0.002822
+public,Alli (gpt-4o-mini),0.883333,0.000827
+public,Alli (alpha-ko-202411-32B),0.850000,0.002125
+public,Langchain (gpt-4-turbo),0.516667,0.000000
+public,Langchain (gpt-3.5-turbo),0.333333,0.000000
+public,OpenAI Assistant (gpt-4-turbo),0.883333,0.000733
+public,OpenAI Assistant (gpt-4),0.783333,0.000000
+public,Cohere (command-r),0.633333,0.000000
+public,Cohere (command-r-plus),0.650000,0.000000
+public,Anything LLM (gpt-4-turbo),0.066667,0.000000
+public,Anything LLM (gpt-3.5-turbo),0.033333,0.000000
+public,Anything LLM (claude3-opus),0.066667,0.000000
+public,Upstage (gpt-3.5-turbo),0.516667,0.000000
+public,Upstage (gpt-4-turbo),0.850000,0.000033
+public,Upstage (gpt-4),0.783333,0.000000
+public,Upstage (solar),0.683333,0.000000
+medical,Alli (gpt-4-turbo),0.733333,0.000767
+medical,Alli (gpt-4),0.733333,0.000000
+medical,Alli (claude3-opus),0.900000,0.782033
+medical,Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),0.633333,0.000000
+medical,Alli (Llama-3-Alpha-Ko-8B-Instruct),0.533333,0.000000
+medical,Alli (KONI-Llama3-8B-Instruct),0.533333,0.000000
+medical,Alli (claude3.5-sonnet),0.850000,0.102542
+medical,Alli (gpt-4o),0.816667,0.024842
+medical,Alli (gpt-4o-mini),0.700000,0.000000
+medical,Alli (alpha-ko-202411-32B),0.750000,0.000750
+medical,Langchain (gpt-4-turbo),0.666667,0.000000
+medical,Langchain (gpt-3.5-turbo),0.416667,0.000000
+medical,OpenAI Assistant (gpt-4-turbo),0.733333,0.000475
+medical,OpenAI Assistant (gpt-4),0.766667,0.000358
+medical,Cohere (command-r),0.416667,0.000000
+medical,Cohere (command-r-plus),0.433333,0.000000
+medical,Anything LLM (gpt-4-turbo),0.550000,0.000000
+medical,Anything LLM (gpt-3.5-turbo),0.233333,0.000000
+medical,Anything LLM (claude3-opus),0.550000,0.000000
+medical,Upstage (gpt-3.5-turbo),0.566667,0.000000
+medical,Upstage (gpt-4-turbo),0.833333,0.085800
+medical,Upstage (gpt-4),0.750000,0.001350
+medical,Upstage (solar),0.733333,0.001083
+law,Alli (gpt-4-turbo),0.716667,0.025910
+law,Alli (gpt-4),0.733333,0.025742
+law,Alli (claude3-opus),0.750000,0.149532
+law,Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),0.583333,0.000000
+law,Alli (Llama-3-Alpha-Ko-8B-Instruct),0.416667,0.000000
+law,Alli (KONI-Llama3-8B-Instruct),0.566667,0.000133
+law,Alli (claude3.5-sonnet),0.766667,0.391225
+law,Alli (gpt-4o),0.683333,0.004795
+law,Alli (gpt-4o-mini),0.733333,0.070938
+law,Alli (alpha-ko-202411-32B),0.716667,0.050923
+law,Langchain (gpt-4-turbo),0.566667,0.000350
+law,Langchain (gpt-3.5-turbo),0.350000,0.000000
+law,OpenAI Assistant (gpt-4-turbo),0.733333,0.278193
+law,OpenAI Assistant (gpt-4),0.516667,0.000000
+law,Cohere (command-r),0.533333,0.000000
+law,Cohere (command-r-plus),0.516667,0.000000
+law,Anything LLM (gpt-4-turbo),0.283333,0.000000
+law,Anything LLM (gpt-3.5-turbo),0.150000,0.000000
+law,Anything LLM (claude3-opus),0.316667,0.000000
+law,Upstage (gpt-3.5-turbo),0.416667,0.000000
+law,Upstage (gpt-4-turbo),0.600000,0.002008
+law,Upstage (gpt-4),0.583333,0.000250
+law,Upstage (solar),0.433333,0.000000
+commerce,Alli (gpt-4-turbo),0.733333,0.002410
+commerce,Alli (gpt-4),0.733333,0.003702
+commerce,Alli (claude3-opus),0.766667,0.052579
+commerce,Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),0.700000,0.000054
+commerce,Alli (Llama-3-Alpha-Ko-8B-Instruct),0.550000,0.000000
+commerce,Alli (KONI-Llama3-8B-Instruct),0.750000,0.013464
+commerce,Alli (claude3.5-sonnet),0.783333,0.242925
+commerce,Alli (gpt-4o),0.716667,0.000547
+commerce,Alli (gpt-4o-mini),0.750000,0.008718
+commerce,Alli (alpha-ko-202411-32B),0.733333,0.002419
+commerce,Langchain (gpt-4-turbo),0.683333,0.000492
+commerce,Langchain (gpt-3.5-turbo),0.466667,0.000000
+commerce,OpenAI Assistant (gpt-4-turbo),0.783333,0.101983
+commerce,OpenAI Assistant (gpt-4),0.750000,0.004112
+commerce,Cohere (command-r),0.666667,0.000000
+commerce,Cohere (command-r-plus),0.683333,0.000000
+commerce,Anything LLM (gpt-4-turbo),0.283333,0.000000
+commerce,Anything LLM (gpt-3.5-turbo),0.233333,0.000000
+commerce,Anything LLM (claude3-opus),0.450000,0.000000
+commerce,Upstage (gpt-3.5-turbo),0.616667,0.000020
+commerce,Upstage (gpt-4-turbo),0.816667,0.528337
+commerce,Upstage (gpt-4),0.783333,0.037646
+commerce,Upstage (solar),0.716667,0.000595

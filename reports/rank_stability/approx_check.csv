@@ -1,0 +1,265 @@
+upper,lower,n,sim,exact,normal
+Alli (claude3.5-sonnet),Alli (claude3-opus),10,0.224100,0.223233,0.285611
+Alli (claude3.5-sonnet),Alli (claude3-opus),20,0.343300,0.340995,0.381974
+Alli (claude3.5-sonnet),Alli (claude3-opus),30,0.409000,0.410533,0.435077
+Alli (claude3.5-sonnet),Alli (claude3-opus),40,0.460800,0.456433,0.471786
+Alli (claude3.5-sonnet),Alli (claude3-opus),50,0.486700,0.489763,0.500000
+Alli (claude3.5-sonnet),Alli (claude3-opus),60,0.521000,0.515802,0.523043
+Alli (claude3.5-sonnet),Alli (claude3-opus),80,0.539300,0.555556,0.559677
+Alli (claude3.5-sonnet),Alli (claude3-opus),100,0.586200,0.585966,0.588555
+Alli (claude3.5-sonnet),Alli (claude3-opus),150,0.643500,0.641742,0.642636
+Alli (claude3.5-sonnet),Alli (claude3-opus),200,0.687700,0.682367,0.682541
+Alli (claude3.5-sonnet),Alli (claude3-opus),250,0.717800,0.714607,0.714389
+Alli (claude3.5-sonnet),Alli (claude3-opus),300,0.744400,0.741368,0.740907
+Alli (claude3-opus),Alli (gpt-4o),10,0.469300,0.470395,0.513489
+Alli (claude3-opus),Alli (gpt-4o),20,0.641400,0.646411,0.657819
+Alli (claude3-opus),Alli (gpt-4o),30,0.743700,0.739491,0.740314
+Alli (claude3-opus),Alli (gpt-4o),40,0.797300,0.799460,0.796316
+Alli (claude3-opus),Alli (gpt-4o),50,0.846100,0.842009,0.837207
+Alli (claude3-opus),Alli (gpt-4o),60,0.871100,0.873745,0.868278
+Alli (claude3-opus),Alli (gpt-4o),80,0.920500,0.917192,0.911664
+Alli (claude3-opus),Alli (gpt-4o),100,0.942400,0.944446,0.939507
+Alli (claude3-opus),Alli (gpt-4o),150,0.974900,0.978364,0.975272
+Alli (claude3-opus),Alli (gpt-4o),200,0.991000,0.991194,0.989455
+Alli (claude3-opus),Alli (gpt-4o),250,0.996400,0.996325,0.995392
+Alli (claude3-opus),Alli (gpt-4o),300,0.998700,0.998441,0.997954
+Alli (gpt-4o),Alli (gpt-4),10,0.327600,0.320427,0.346181
+Alli (gpt-4o),Alli (gpt-4),20,0.410000,0.398142,0.406435
+Alli (gpt-4o),Alli (gpt-4),30,0.439900,0.433158,0.437172
+Alli (gpt-4o),Alli (gpt-4),40,0.454000,0.455136,0.457584
+Alli (gpt-4o),Alli (gpt-4),50,0.474100,0.471189,0.472871
+Alli (gpt-4o),Alli (gpt-4),60,0.477800,0.483895,0.485133
+Alli (gpt-4o),Alli (gpt-4),80,0.502500,0.503533,0.504293
+Alli (gpt-4o),Alli (gpt-4),100,0.514300,0.518675,0.519190
+Alli (gpt-4o),Alli (gpt-4),150,0.547900,0.546674,0.546916
+Alli (gpt-4o),Alli (gpt-4),200,0.565200,0.567418,0.567548
+Alli (gpt-4o),Alli (gpt-4),250,0.588000,0.584281,0.584353
+Alli (gpt-4o),Alli (gpt-4),300,0.599300,0.598687,0.598724
+Alli (gpt-4),Alli (gpt-4-turbo),10,0.308300,0.318966,0.341156
+Alli (gpt-4),Alli (gpt-4-turbo),20,0.383900,0.387141,0.394060
+Alli (gpt-4),Alli (gpt-4-turbo),30,0.421000,0.416339,0.419741
+Alli (gpt-4),Alli (gpt-4-turbo),40,0.428700,0.434019,0.436125
+Alli (gpt-4),Alli (gpt-4-turbo),50,0.440000,0.446522,0.447987
+Alli (gpt-4),Alli (gpt-4-turbo),60,0.458500,0.456137,0.457227
+Alli (gpt-4),Alli (gpt-4-turbo),80,0.472700,0.470474,0.471159
+Alli (gpt-4),Alli (gpt-4-turbo),100,0.476800,0.481088,0.481565
+Alli (gpt-4),Alli (gpt-4-turbo),150,0.490900,0.499757,0.500000
+Alli (gpt-4),Alli (gpt-4-turbo),200,0.516300,0.512890,0.513038
+Alli (gpt-4),Alli (gpt-4-turbo),250,0.510500,0.523215,0.523314
+Alli (gpt-4),Alli (gpt-4-turbo),300,0.529100,0.531838,0.531908
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),10,0.332000,0.334880,0.351585
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),20,0.391700,0.396241,0.401219
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),30,0.420800,0.422728,0.425215
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),40,0.442800,0.438951,0.440502
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),50,0.448800,0.450480,0.451560
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),60,0.462500,0.459366,0.460171
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),80,0.470600,0.472643,0.473148
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),100,0.483300,0.482488,0.482837
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),150,0.502000,0.499824,0.500000
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),200,0.515500,0.512032,0.512138
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),250,0.526500,0.521636,0.521706
+Alli (gpt-4-turbo),Alli (alpha-ko-202411-32B),300,0.522900,0.529661,0.529709
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),10,0.331000,0.332424,0.353704
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),20,0.411200,0.404640,0.411155
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),30,0.442800,0.437192,0.440372
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),40,0.461000,0.457803,0.459754
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),50,0.467900,0.472921,0.474262
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),60,0.477400,0.484909,0.485896
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),80,0.506100,0.503469,0.504072
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),100,0.519900,0.517799,0.518206
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),150,0.550400,0.544330,0.544518
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),200,0.563300,0.564013,0.564111
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),250,0.572100,0.580030,0.580083
+Alli (alpha-ko-202411-32B),Alli (gpt-4o-mini),300,0.593700,0.593728,0.593753
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),10,0.420800,0.423935,0.427066
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),20,0.473600,0.481960,0.482718
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),30,0.508500,0.513839,0.514112
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),40,0.534900,0.536529,0.536621
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),50,0.549200,0.554492,0.554498
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),60,0.566300,0.569552,0.569512
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),80,0.591600,0.594275,0.594190
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),100,0.605100,0.614460,0.614356
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),150,0.646300,0.653908,0.653793
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),200,0.685300,0.684363,0.684250
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),250,0.719700,0.709480,0.709371
+Alli (gpt-4o-mini),Upstage (gpt-4-turbo),300,0.726100,0.730952,0.730848
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),10,0.384600,0.376303,0.385806
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),20,0.442200,0.436133,0.438830
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),30,0.471000,0.465286,0.466611
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),40,0.479400,0.484734,0.485528
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),50,0.499500,0.499474,0.500000
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),60,0.513800,0.511447,0.511817
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),80,0.534300,0.530474,0.530676
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),100,0.548400,0.545556,0.545674
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),150,0.573600,0.574288,0.574313
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),200,0.590500,0.596161,0.596151
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),250,0.614900,0.614221,0.614194
+Upstage (gpt-4-turbo),OpenAI Assistant (gpt-4-turbo),300,0.633000,0.629798,0.629761
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),10,0.418300,0.419894,0.430830
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),20,0.497400,0.504232,0.507022
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),30,0.549400,0.550296,0.551462
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),40,0.582600,0.583244,0.583791
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),50,0.612300,0.609383,0.609620
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),60,0.629600,0.631276,0.631332
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),80,0.662300,0.667004,0.666865
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),100,0.693700,0.695806,0.695570
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),150,0.757300,0.750472,0.750133
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),200,0.791000,0.790582,0.790210
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),250,0.818300,0.821878,0.821499
+OpenAI Assistant (gpt-4-turbo),OpenAI Assistant (gpt-4),300,0.850500,0.847136,0.846762
+OpenAI Assistant (gpt-4),Upstage (gpt-4),10,0.348200,0.351415,0.365939
+OpenAI Assistant (gpt-4),Upstage (gpt-4),20,0.418800,0.414556,0.418786
+OpenAI Assistant (gpt-4),Upstage (gpt-4),30,0.441500,0.443435,0.445535
+OpenAI Assistant (gpt-4),Upstage (gpt-4),40,0.454600,0.461958,0.463251
+OpenAI Assistant (gpt-4),Upstage (gpt-4),50,0.475800,0.475615,0.476502
+OpenAI Assistant (gpt-4),Upstage (gpt-4),60,0.488900,0.486475,0.487125
+OpenAI Assistant (gpt-4),Upstage (gpt-4),80,0.502900,0.503325,0.503717
+OpenAI Assistant (gpt-4),Upstage (gpt-4),100,0.517700,0.516360,0.516620
+OpenAI Assistant (gpt-4),Upstage (gpt-4),150,0.551500,0.540538,0.540652
+OpenAI Assistant (gpt-4),Upstage (gpt-4),200,0.565000,0.558510,0.558566
+OpenAI Assistant (gpt-4),Upstage (gpt-4),250,0.574900,0.573160,0.573186
+OpenAI Assistant (gpt-4),Upstage (gpt-4),300,0.587100,0.585707,0.585715
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),10,0.454500,0.449493,0.450084
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),20,0.510700,0.505132,0.505055
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),30,0.546100,0.537280,0.537097
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),40,0.566800,0.560744,0.560537
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),50,0.581400,0.579612,0.579403
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),60,0.596900,0.595597,0.595392
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),80,0.623200,0.622088,0.621898
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),100,0.640600,0.643874,0.643701
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),150,0.686400,0.686609,0.686467
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),200,0.717900,0.719519,0.719400
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),250,0.742800,0.746464,0.746362
+Upstage (gpt-4),Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),300,0.772700,0.769281,0.769193
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),10,0.424200,0.419894,0.430830
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),20,0.500900,0.504232,0.507022
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),30,0.549400,0.550296,0.551462
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),40,0.575000,0.583244,0.583791
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),50,0.609900,0.609383,0.609620
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),60,0.637000,0.631276,0.631332
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),80,0.662900,0.667004,0.666865
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),100,0.705000,0.695806,0.695570
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),150,0.755800,0.750472,0.750133
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),200,0.790500,0.790582,0.790210
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),250,0.821000,0.821878,0.821499
+Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro),Alli (KONI-Llama3-8B-Instruct),300,0.845200,0.847136,0.846762
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),10,0.421900,0.420110,0.421169
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),20,0.451200,0.464126,0.464341
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),30,0.484600,0.487465,0.487507
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),40,0.511500,0.503626,0.503607
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),50,0.503300,0.516173,0.516126
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),60,0.520900,0.526546,0.526486
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),80,0.543700,0.543344,0.543273
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),100,0.555700,0.556910,0.556836
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),150,0.577000,0.583274,0.583204
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),200,0.609700,0.603718,0.603654
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),250,0.631200,0.620789,0.620730
+Alli (KONI-Llama3-8B-Instruct),Upstage (solar),300,0.626800,0.635624,0.635570
+Upstage (solar),Langchain (gpt-4-turbo),10,0.431300,0.431460,0.434669
+Upstage (solar),Langchain (gpt-4-turbo),20,0.500800,0.493466,0.494200
+Upstage (solar),Langchain (gpt-4-turbo),30,0.528500,0.528157,0.528393
+Upstage (solar),Langchain (gpt-4-turbo),40,0.555300,0.553111,0.553163
+Upstage (solar),Langchain (gpt-4-turbo),50,0.579400,0.572995,0.572960
+Upstage (solar),Langchain (gpt-4-turbo),60,0.589100,0.589734,0.589654
+Upstage (solar),Langchain (gpt-4-turbo),80,0.611200,0.617298,0.617174
+Upstage (solar),Langchain (gpt-4-turbo),100,0.633900,0.639831,0.639691
+Upstage (solar),Langchain (gpt-4-turbo),150,0.688600,0.683762,0.683614
+Upstage (solar),Langchain (gpt-4-turbo),200,0.716300,0.717409,0.717266
+Upstage (solar),Langchain (gpt-4-turbo),250,0.738500,0.744867,0.744731
+Upstage (solar),Langchain (gpt-4-turbo),300,0.774400,0.768065,0.767935
+Langchain (gpt-4-turbo),Cohere (command-r-plus),10,0.516400,0.514472,0.515522
+Langchain (gpt-4-turbo),Cohere (command-r-plus),20,0.603200,0.603449,0.603117
+Langchain (gpt-4-turbo),Cohere (command-r-plus),30,0.668300,0.657576,0.657054
+Langchain (gpt-4-turbo),Cohere (command-r-plus),40,0.689400,0.697500,0.696950
+Langchain (gpt-4-turbo),Cohere (command-r-plus),50,0.728500,0.729324,0.728786
+Langchain (gpt-4-turbo),Cohere (command-r-plus),60,0.753600,0.755768,0.755254
+Langchain (gpt-4-turbo),Cohere (command-r-plus),80,0.793200,0.797877,0.797417
+Langchain (gpt-4-turbo),Cohere (command-r-plus),100,0.823200,0.830308,0.829898
+Langchain (gpt-4-turbo),Cohere (command-r-plus),150,0.884100,0.886362,0.886052
+Langchain (gpt-4-turbo),Cohere (command-r-plus),200,0.923100,0.921569,0.921332
+Langchain (gpt-4-turbo),Cohere (command-r-plus),250,0.945200,0.944893,0.944710
+Langchain (gpt-4-turbo),Cohere (command-r-plus),300,0.960600,0.960814,0.960672
+Cohere (command-r-plus),Cohere (command-r),10,0.338100,0.339428,0.354630
+Cohere (command-r-plus),Cohere (command-r),20,0.393000,0.398807,0.403301
+Cohere (command-r-plus),Cohere (command-r),30,0.424800,0.424548,0.426806
+Cohere (command-r-plus),Cohere (command-r),40,0.441500,0.440363,0.441773
+Cohere (command-r-plus),Cohere (command-r),50,0.445500,0.451615,0.452597
+Cohere (command-r-plus),Cohere (command-r),60,0.458500,0.460294,0.461025
+Cohere (command-r-plus),Cohere (command-r),80,0.479600,0.473267,0.473724
+Cohere (command-r-plus),Cohere (command-r),100,0.486200,0.482889,0.483206
+Cohere (command-r-plus),Cohere (command-r),150,0.505500,0.499841,0.500000
+Cohere (command-r-plus),Cohere (command-r),200,0.512600,0.511782,0.511877
+Cohere (command-r-plus),Cohere (command-r),250,0.520400,0.521177,0.521239
+Cohere (command-r-plus),Cohere (command-r),300,0.528000,0.529028,0.529071
+Cohere (command-r),Upstage (gpt-3.5-turbo),10,0.442000,0.441132,0.443810
+Cohere (command-r),Upstage (gpt-3.5-turbo),20,0.504000,0.505159,0.505695
+Cohere (command-r),Upstage (gpt-3.5-turbo),30,0.534900,0.541660,0.541773
+Cohere (command-r),Upstage (gpt-3.5-turbo),40,0.562600,0.568163,0.568124
+Cohere (command-r),Upstage (gpt-3.5-turbo),50,0.589200,0.589394,0.589287
+Cohere (command-r),Upstage (gpt-3.5-turbo),60,0.604400,0.607323,0.607181
+Cohere (command-r),Upstage (gpt-3.5-turbo),80,0.635700,0.636905,0.636734
+Cohere (command-r),Upstage (gpt-3.5-turbo),100,0.662300,0.661094,0.660916
+Cohere (command-r),Upstage (gpt-3.5-turbo),150,0.710900,0.708094,0.707921
+Cohere (command-r),Upstage (gpt-3.5-turbo),200,0.748100,0.743788,0.743625
+Cohere (command-r),Upstage (gpt-3.5-turbo),250,0.773000,0.772608,0.772457
+Cohere (command-r),Upstage (gpt-3.5-turbo),300,0.798800,0.796678,0.796537
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),10,0.410100,0.412318,0.412786
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),20,0.451600,0.447454,0.447548
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),30,0.470700,0.464887,0.464903
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),40,0.483300,0.476355,0.476343
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),50,0.491500,0.484905,0.484881
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),60,0.502500,0.491747,0.491718
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),80,0.509400,0.502425,0.502391
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),100,0.511000,0.510727,0.510692
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),150,0.526100,0.526208,0.526175
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),200,0.533200,0.537781,0.537750
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),250,0.550100,0.547260,0.547231
+Upstage (gpt-3.5-turbo),Alli (Llama-3-Alpha-Ko-8B-Instruct),300,0.551600,0.555412,0.555385
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),10,0.638400,0.640922,0.638488
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),20,0.749800,0.750331,0.749239
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),30,0.814900,0.814521,0.814046
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),40,0.858000,0.858128,0.857986
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),50,0.894100,0.889625,0.889671
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),60,0.913700,0.913155,0.913308
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),80,0.942100,0.945020,0.945256
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),100,0.965100,0.964498,0.964737
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),150,0.986900,0.987497,0.987654
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),200,0.996300,0.995412,0.995495
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),250,0.997900,0.998275,0.998316
+Alli (Llama-3-Alpha-Ko-8B-Instruct),Langchain (gpt-3.5-turbo),300,0.999500,0.999341,0.999361
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),10,0.523200,0.527725,0.526599
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),20,0.611600,0.607803,0.606915
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),30,0.656700,0.657765,0.657073
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),40,0.690700,0.695094,0.694541
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),50,0.725300,0.725125,0.724676
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),60,0.749000,0.750271,0.749902
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),80,0.792900,0.790698,0.790445
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),100,0.819300,0.822200,0.822026
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),150,0.870400,0.877621,0.877561
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),200,0.911400,0.913317,0.913311
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),250,0.939200,0.937543,0.937563
+Langchain (gpt-3.5-turbo),Anything LLM (claude3-opus),300,0.952300,0.954477,0.954509
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),10,0.450400,0.448137,0.466915
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),20,0.569900,0.565349,0.569902
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),30,0.627600,0.629974,0.631394
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),40,0.674000,0.675813,0.676037
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),50,0.710800,0.711604,0.711222
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),60,0.744100,0.740952,0.740216
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),80,0.785300,0.787086,0.785984
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),100,0.822500,0.822192,0.820935
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),150,0.885300,0.882117,0.880811
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),200,0.920400,0.919282,0.918099
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),250,0.948000,0.943679,0.942660
+Anything LLM (claude3-opus),Anything LLM (gpt-4-turbo),300,0.958100,0.960206,0.959353
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),10,0.725400,0.727780,0.731492
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),20,0.880000,0.878295,0.871802
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),30,0.940100,0.938947,0.932797
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),40,0.969900,0.967939,0.963294
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),50,0.982200,0.982732,0.979473
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),60,0.990800,0.990547,0.988342
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),80,0.995900,0.997077,0.996125
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),100,0.999400,0.999071,0.998678
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),150,1.000000,0.999944,0.999904
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),200,1.000000,0.999996,0.999993
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),250,1.000000,1.000000,0.999999
+Anything LLM (gpt-4-turbo),Anything LLM (gpt-3.5-turbo),300,1.000000,1.000000,1.000000
