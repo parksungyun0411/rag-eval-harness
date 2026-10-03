@@ -69,6 +69,25 @@ def _cmd_stability(args: argparse.Namespace) -> None:
     print(f"[stability] {args.golden} · {args.metric} → {args.out}")
 
 
+def _cmd_rankstab_fetch(args: argparse.Namespace) -> None:
+    from rag_eval.datasets import allganize_ko
+
+    path = allganize_ko.download(args.out)
+    print(f"[rankstab-fetch] {allganize_ko.REPO}@{allganize_ko.REVISION[:12]} → {path}")
+
+
+def _cmd_rankstab(args: argparse.Namespace) -> None:
+    import shlex
+    import sys
+
+    from rag_eval.leaderboard_experiment import run
+
+    command = "rag-eval " + " ".join(
+        shlex.quote(a) for a in (sys.argv[1:] if args.argv is None else args.argv)
+    )
+    run(args.data, args.out, args.web, n_boot=args.n_boot, seed=args.seed, command=command)
+
+
 def _cmd_report(args: argparse.Namespace) -> None:
     from rag_eval.judge import aggregate_judgments
     from rag_eval.report import (
@@ -140,6 +159,20 @@ def main(argv: list[str] | None = None) -> None:
     st.add_argument("--subsample", action="store_true", help="복원추출 대신 비복원 부분집합")
     st.add_argument("--out", required=True)
     st.set_defaults(func=_cmd_stability)
+
+    rf = sub.add_parser(
+        "rankstab-fetch", help="allganize/RAG-Evaluation-Dataset-KO 고정 리비전 받기"
+    )
+    rf.add_argument("--out", default="data/raw/rag_evaluation_result.csv")
+    rf.set_defaults(func=_cmd_rankstab_fetch)
+
+    rs = sub.add_parser("rankstab", help="한국어 RAG 리더보드 순위 안정성 실험")
+    rs.add_argument("--data", default="data/raw/rag_evaluation_result.csv")
+    rs.add_argument("--out", default="reports")
+    rs.add_argument("--web", default="web/data")
+    rs.add_argument("--n-boot", type=int, default=2000)
+    rs.add_argument("--seed", type=int, default=0)
+    rs.set_defaults(func=_cmd_rankstab, argv=None)
 
     r = sub.add_parser("report", help="마크다운 표·그림 생성")
     r.add_argument("--per-query")
