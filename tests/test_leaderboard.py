@@ -120,6 +120,10 @@ def test_api_endpoints(client):
         client.get("/api/flip", params={"n": 10, "gap": 0.3, "discordance": 0.2}).status_code == 422
     )
     assert client.get("/api/flip", params={"n": 0, "gap": 0.1}).status_code == 422
+    # 부동소수 반올림 회귀: JS는 받는데 API가 422를 내던 입력
+    ok = client.get("/api/flip", params={"n": 10, "gap": 0.1, "accuracy": 1.0})
+    assert ok.status_code == 200 and ok.json()["p_reverse"] == 0.0
+    assert "n_power80_normal" in ok.json()
     page = client.get("/")
     assert page.status_code == 200 and "순위 역전 확률 계산기" in page.text
 
@@ -175,3 +179,42 @@ def test_js_calculator_matches_python(n, gap, disc, acc):
     assert got["pTie"] == pytest.approx(want["p_tie"], abs=1e-9)
     assert got["n95Exact"] == want["n_95_exact"]
     assert got["pFlipNormal"] == pytest.approx(want["p_flip_normal"], abs=1e-6)
+    assert got["nPower80Normal"] == pytest.approx(want["n_power80_normal"], rel=1e-9)
+
+
+def _node(js: str, *args: str) -> str:
+    out = subprocess.run(
+        ["node", "-e", js, str(ROOT / "web" / "flip.js"), *args],
+        capture_output=True,
+        text=True,
+        check=True,
+        timeout=30,
+    )
+    return out.stdout
+
+
+@pytest.mark.skipif(shutil.which("node") is None, reason="node 없음")
+def test_js_worst_case_is_fast():
+    # 예전에는 gap 1%p·불일치율 50%에서 정확해 n95 탐색이 약 12초 걸렸다
+    js = (
+        "const F=require(process.argv[1]);const t=Date.now();"
+        "const r=F.flipProbability(20000,0.01,0.5,null);"
+        "console.log(JSON.stringify({ms:Date.now()-t,skip:r.n95ExactSkipped,n95:r.n95Exact,"
+        "p:r.pFlip}));"
+    )
+    got = json.loads(_node(js))
+    assert got["ms"] < 2000
+    assert got["skip"] is True and got["n95"] is None
+    want = flip_probability(20000, 0.01, discordance=0.5)
+    assert got["p"] == pytest.approx(want["p_flip"], abs=1e-9)
+
+
+@pytest.mark.skipif(shutil.which("node") is None, reason="node 없음")
+def test_js_and_python_accept_float_rounding_case():
+    js = (
+        "const F=require(process.argv[1]);"
+        "console.log(JSON.stringify(F.flipProbability(10,0.1,null,1.0)));"
+    )
+    got = json.loads(_node(js))
+    want = flip_probability(10, 0.1, accuracy=1.0)
+    assert got["pFlip"] == pytest.approx(want["p_flip"], abs=1e-12)

@@ -30,7 +30,7 @@
    60
   ],
   "command": "rag-eval rankstab --data data/raw/rag_evaluation_result.csv --n-boot 10000 --seed 0",
-  "generated": "2026-10-03 16:02"
+  "generated": "2026-10-03 19:47"
  },
  "domains": [
   "finance",
@@ -1497,7 +1497,11 @@
    "p_neg": 0.02,
    "n_sim_grid": null,
    "n_exact": 2000,
-   "n_normal": 1916.887951526369
+   "n_normal": 1916.887951526369,
+   "n_power80_normal": 3916.590987440196,
+   "mcnemar_p": 0.6072387695312499,
+   "n_pos": 9,
+   "n_neg": 6
   },
   {
    "upper": "Alli (claude3-opus)",
@@ -1508,7 +1512,11 @@
    "p_neg": 0.023333333333333334,
    "n_sim_grid": 200,
    "n_exact": 143,
-   "n_normal": 131.2098278443337
+   "n_normal": 131.2098278443337,
+   "n_power80_normal": 268.0882984263611,
+   "mcnemar_p": 0.005222879350185395,
+   "n_pos": 23,
+   "n_neg": 7
   },
   {
    "upper": "Alli (gpt-4o)",
@@ -1519,7 +1527,11 @@
    "p_neg": 0.056666666666666664,
    "n_sim_grid": null,
    "n_exact": 10513,
-   "n_normal": 10368.097357053419
+   "n_normal": 10368.097357053419,
+   "n_power80_normal": 21184.126403008137,
+   "mcnemar_p": 0.8679394004284404,
+   "n_pos": 19,
+   "n_neg": 17
   },
   {
    "upper": "Alli (gpt-4)",
@@ -1530,7 +1542,11 @@
    "p_neg": 0.06333333333333334,
    "n_sim_grid": null,
    "n_exact": null,
-   "n_normal": 44941.226743300744
+   "n_normal": 44941.226743300744,
+   "n_power80_normal": 91824.04401215035,
+   "mcnemar_p": 1.0,
+   "n_pos": 20,
+   "n_neg": 19
   },
   {
    "upper": "Alli (gpt-4-turbo)",
@@ -1541,7 +1557,11 @@
    "p_neg": 0.07333333333333333,
    "n_sim_grid": null,
    "n_exact": null,
-   "n_normal": 51855.852620550206
+   "n_normal": 51855.852620550206,
+   "n_power80_normal": 105952.02753397875,
+   "mcnemar_p": 1.0,
+   "n_pos": 23,
+   "n_neg": 22
   },
   {
    "upper": "Alli (alpha-ko-202411-32B)",
@@ -1552,7 +1572,11 @@
    "p_neg": 0.06333333333333334,
    "n_sim_grid": null,
    "n_exact": 11666,
-   "n_normal": 11520.535003261679
+   "n_normal": 11520.535003261679,
+   "n_power80_normal": 23538.79032331292,
+   "mcnemar_p": 0.8746293123804207,
+   "n_pos": 21,
+   "n_neg": 19
   },
   {
    "upper": "Alli (gpt-4o-mini)",
@@ -1563,7 +1587,11 @@
    "p_neg": 0.12333333333333334,
    "n_sim_grid": null,
    "n_exact": 2606,
-   "n_normal": 2557.131088308722
+   "n_normal": 2557.131088308722,
+   "n_power80_normal": 5224.737609831709,
+   "mcnemar_p": 0.5764306261883931,
+   "n_pos": 43,
+   "n_neg": 37
   },
   {
    "upper": "Upstage (gpt-4-turbo)",
@@ -1574,7 +1602,11 @@
    "p_neg": 0.09,
    "n_sim_grid": null,
    "n_exact": 7393,
-   "n_normal": 7294.930300498132
+   "n_normal": 7294.930300498132,
+   "n_power80_normal": 14905.022615528896,
+   "mcnemar_p": 0.7913664277791806,
+   "n_pos": 30,
+   "n_neg": 27
   },
   {
    "upper": "OpenAI Assistant (gpt-4-turbo)",
@@ -1585,7 +1617,11 @@
    "p_neg": 0.07666666666666666,
    "n_sim_grid": null,
    "n_exact": 1003,
-   "n_normal": 968.527805167506
+   "n_normal": 968.527805167506,
+   "n_power80_normal": 1978.8988030227629,
+   "mcnemar_p": 0.3408909412200971,
+   "n_pos": 31,
+   "n_neg": 23
   },
   {
    "upper": "OpenAI Assistant (gpt-4)",
@@ -1596,7 +1632,11 @@
    "p_neg": 0.07666666666666666,
    "n_sim_grid": null,
    "n_exact": 13972,
-   "n_normal": 13825.410295678152
+   "n_normal": 13825.410295678152,
+   "n_power80_normal": 28248.11816392236,
+   "mcnemar_p": 0.8854334972865135,
+   "n_pos": 25,
+   "n_neg": 23
   },
   {
    "upper": "Upstage (gpt-4)",
@@ -1607,7 +1647,11 @@
    "p_neg": 0.16,
    "n_sim_grid": null,
    "n_exact": 1907,
-   "n_normal": 1868.8697162676913
+   "n_normal": 1868.8697162676913,
+   "n_power80_normal": 3818.47999076083,
+   "mcnemar_p": 0.4926450664865023,
+   "n_pos": 56,
+   "n_neg": 48
   },
   {
    "upper": "Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro)",
@@ -1618,7 +1662,11 @@
    "p_neg": 0.07666666666666666,
    "n_sim_grid": null,
    "n_exact": 1003,
-   "n_normal": 968.527805167506
+   "n_normal": 968.527805167506,
+   "n_power80_normal": 1978.8988030227629,
+   "mcnemar_p": 0.3408909412200971,
+   "n_pos": 31,
+   "n_neg": 23
   },
   {
    "upper": "Alli (KONI-Llama3-8B-Instruct)",
@@ -1629,7 +1677,11 @@
    "p_neg": 0.16333333333333333,
    "n_sim_grid": null,
    "n_exact": 7418,
-   "n_normal": 7342.948535756818
+   "n_normal": 7342.948535756818,
+   "n_power80_normal": 15003.133612208276,
+   "mcnemar_p": 0.7666042612518517,
+   "n_pos": 53,
+   "n_neg": 49
   },
   {
    "upper": "Upstage (solar)",
@@ -1640,7 +1692,11 @@
    "p_neg": 0.12,
    "n_sim_grid": null,
    "n_exact": 1896,
-   "n_normal": 1854.1702564946256
+   "n_normal": 1854.1702564946256,
+   "n_power80_normal": 3788.4460121855113,
+   "mcnemar_p": 0.499896876860327,
+   "n_pos": 43,
+   "n_neg": 36
   },
   {
    "upper": "Langchain (gpt-4-turbo)",
@@ -1651,7 +1707,11 @@
    "p_neg": 0.12,
    "n_sim_grid": null,
    "n_exact": 368,
-   "n_normal": 351.0614841292474
+   "n_normal": 351.0614841292474,
+   "n_power80_normal": 717.2898362072447,
+   "mcnemar_p": 0.08932073673118937,
+   "n_pos": 53,
+   "n_neg": 36
   },
   {
    "upper": "Cohere (command-r-plus)",
@@ -1662,7 +1722,11 @@
    "p_neg": 0.07666666666666666,
    "n_sim_grid": null,
    "n_exact": null,
-   "n_normal": 54160.72791296624
+   "n_normal": 54160.72791296624,
+   "n_power80_normal": 110661.3553745873,
+   "mcnemar_p": 1.0,
+   "n_pos": 24,
+   "n_neg": 23
   },
   {
    "upper": "Cohere (command-r)",
@@ -1673,7 +1737,11 @@
    "p_neg": 0.12333333333333334,
    "n_sim_grid": null,
    "n_exact": 1510,
-   "n_normal": 1472.7192753836114
+   "n_normal": 1472.7192753836114,
+   "n_power80_normal": 3009.064268156084,
+   "mcnemar_p": 0.439705429185822,
+   "n_pos": 45,
+   "n_neg": 37
   },
   {
    "upper": "Upstage (gpt-3.5-turbo)",
@@ -1684,7 +1752,11 @@
    "p_neg": 0.19,
    "n_sim_grid": null,
    "n_exact": null,
-   "n_normal": 33416.85028121832
+   "n_normal": 33416.85028121832,
+   "n_power80_normal": 68277.40480910297,
+   "mcnemar_p": 0.9260777633148563,
+   "n_pos": 59,
+   "n_neg": 57
   },
   {
    "upper": "Alli (Llama-3-Alpha-Ko-8B-Instruct)",
@@ -1695,7 +1767,11 @@
    "p_neg": 0.16,
    "n_sim_grid": 150,
    "n_exact": 117,
-   "n_normal": 108.11924749464235
+   "n_normal": 108.11924749464235,
+   "n_power80_normal": 220.90955810387496,
+   "mcnemar_p": 0.0016943197076057012,
+   "n_pos": 85,
+   "n_neg": 48
   },
   {
    "upper": "Langchain (gpt-3.5-turbo)",
@@ -1706,7 +1782,11 @@
    "p_neg": 0.17,
    "n_sim_grid": null,
    "n_exact": 399,
-   "n_normal": 382.432655282344
+   "n_normal": 382.432655282344,
+   "n_power80_normal": 781.3875035256841,
+   "mcnemar_p": 0.1013676535330924,
+   "n_pos": 70,
+   "n_neg": 51
   },
   {
    "upper": "Anything LLM (claude3-opus)",
@@ -1717,7 +1797,11 @@
    "p_neg": 0.05333333333333334,
    "n_sim_grid": null,
    "n_exact": 369,
-   "n_normal": 348.2922664096008
+   "n_normal": 348.2922664096008,
+   "n_power80_normal": 711.6317625809843,
+   "mcnemar_p": 0.09614175442061423,
+   "n_pos": 28,
+   "n_neg": 16
   },
   {
    "upper": "Anything LLM (gpt-4-turbo)",
@@ -1728,7 +1812,11 @@
    "p_neg": 0.03333333333333333,
    "n_sim_grid": 50,
    "n_exact": 44,
-   "n_normal": 39.37495291211478
+   "n_normal": 39.37495291211478,
+   "n_power80_normal": 80.45101727707817,
+   "mcnemar_p": 1.6163814566157175e-07,
+   "n_pos": 50,
+   "n_neg": 10
   }
  ]
 }

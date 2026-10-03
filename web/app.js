@@ -91,7 +91,7 @@
     const winners = scope === "overall" ? DATA.leaderboard[0].system : DATA.domain_winners[scope];
     $("chart-note").textContent =
       `${scope === "overall" ? "전체" : scope} 1위: ${winners}. n=${last.n}에서 Kendall tau ${fmt(last.tau_mean)} ` +
-      `[${fmt(last.tau_lo)}, ${fmt(last.tau_hi)}], 1위 유지 ${fmt(last.top1_held)}, 순위 전체 유지 ${fmt(last.order_held)}.` +
+      `[${fmt(last.tau_lo)}, ${fmt(last.tau_hi)}], 1위 유지 ${fmt(last.top1_held)}, 순위 전체 유지 ${fmt(last.order_held, 4)}.` +
       " 유지는 엄격한 우위만 세며 동점은 유지로 보지 않습니다.";
   }
 
@@ -137,8 +137,12 @@
       stat("엄격한 역전", pct(r.pReverse)) +
       stat("동점", pct(r.pTie)) +
       stat("정규 근사", pct(r.pFlipNormal), "McNemar식 근사") +
-      stat("95%로 가르는 데 필요한 n", r.n95Exact === null ? "&gt;20,000" : r.n95Exact.toLocaleString(),
-        `정규 근사 ${Math.ceil(r.n95Normal).toLocaleString()}`) +
+      (r.n95ExactSkipped
+        ? stat("95%로 가르는 n · 검정력 약 50%", `${Math.ceil(r.n95Normal).toLocaleString()}`,
+          "근사값 — 정규 근사가 5,000을 넘어 정확해 탐색 생략")
+        : stat("95%로 가르는 n · 검정력 약 50%", r.n95Exact === null ? "&gt;20,000" : r.n95Exact.toLocaleString(),
+          `정확해 · 정규 근사 ${Math.ceil(r.n95Normal).toLocaleString()}`)) +
+      stat("95%로 가르는 n · 검정력 80%", Math.ceil(r.nPower80Normal).toLocaleString(), "근사값 — 정규 근사") +
       stat("사용한 불일치율", pct(r.discordance), r.discordanceAssumedIndependent ? "독립 가정으로 계산" : "입력값");
     if (API) {
       const qs = new URLSearchParams({ n, gap });
@@ -148,11 +152,19 @@
         const res = await fetch(`api/flip?${qs}`);
         const j = await res.json();
         html += res.ok
-          ? stat("서버 /api/flip", pct(j.p_flip), `n95 ${j.n_95_exact === null ? "&gt;20,000" : j.n_95_exact}`)
+          ? stat("서버 /api/flip", pct(j.p_flip),
+            `n95(검정력 약 50%, 정확해) ${j.n_95_exact === null ? "&gt;20,000" : j.n_95_exact}`)
           : stat("서버 /api/flip", "오류", esc(j.detail || res.status));
       } catch (e) { /* 정적 배포: 서버 없음 */ }
     }
     $("calc-out").innerHTML = html;
+  }
+
+  // 입력마다 바로 계산하지 않고 마지막 입력 후 250ms 뒤에 한 번만 계산한다
+  let timer = null;
+  function scheduleCompute() {
+    clearTimeout(timer);
+    timer = setTimeout(compute, 250);
   }
 
   async function init() {
@@ -170,7 +182,7 @@
     $("sysA").innerHTML = opts; $("sysB").innerHTML = opts;
     $("sysA").value = DATA.leaderboard[0].system; $("sysB").value = DATA.leaderboard[1].system;
     ["sysA", "sysB"].forEach((id) => $(id).addEventListener("change", fillPair));
-    ["n", "gap", "disc", "acc"].forEach((id) => $(id).addEventListener("input", compute));
+    ["n", "gap", "disc", "acc"].forEach((id) => $(id).addEventListener("input", scheduleCompute));
     $("n").value = DATA.leaderboard[0].n;
     fillPair();
   }
