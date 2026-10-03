@@ -1,0 +1,11 @@
+domain,question,target_answer,target_file_name,target_page_no,context_type,alli_claude-3.5-sonnet_answer,alli_claude-3.5-sonnet_ox,alli_gpt-4o_answer,alli_gpt-4o_ox,cohere_command-r_answer,cohere_command-r_ox
+finance,합성 질문 0,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,O,합성 답변,O
+finance,합성 질문 1,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,O,합성 답변,O
+public,합성 질문 2,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,O,합성 답변,O
+public,합성 질문 3,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,O,합성 답변,X
+medical,합성 질문 4,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,O,합성 답변,X
+medical,합성 질문 5,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,O,합성 답변,X
+law,합성 질문 6,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,O,합성 답변,X
+law,합성 질문 7,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,X,합성 답변,X
+commerce,합성 질문 8,합성 정답,synthetic.pdf,1,paragraph,합성 답변,O,합성 답변,X,합성 답변,X
+commerce,합성 질문 9,합성 정답,synthetic.pdf,1,paragraph,합성 답변,X,합성 답변,X,합성 답변,X
