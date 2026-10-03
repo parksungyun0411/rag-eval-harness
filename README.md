@@ -107,8 +107,13 @@ from rag_eval.matrix import run_matrix
 from rag_eval.report import render_matrix_report
 
 golden = GoldenSet.load("data/golden/real", name="real")
-rows = run_matrix({"bm25": bm25, "hybrid": lambda: build_hybrid()}, [golden],
-                  ks=(1, 5, 10, 20), depth=100, out_dir="results")
+rows = run_matrix(
+    {"bm25": bm25, "hybrid": lambda: build_hybrid()},
+    [golden],
+    ks=(1, 5, 10, 20),
+    depth=100,
+    out_dir="results",
+)
 render_matrix_report(rows, "reports", baseline="bm25")
 ```
 
