@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/parksungyun0411/rag-eval-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/parksungyun0411/rag-eval-harness/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-골든셋 질문이 몇 개면 한국어 RAG 리더보드의 순위를 믿을 수 있는지 측정한 저장소입니다. 공개 데이터셋 [allganize/RAG-Evaluation-Dataset-KO](https://huggingface.co/datasets/allganize/RAG-Evaluation-Dataset-KO)에 담긴 RAG 시스템 23개의 질문 300개별 정답 여부를 그대로 쓰고, 질문 집합을 부트스트랩해 질문 수에 따라 순위가 얼마나 흔들리는지 계산했습니다. 결과는 리더보드·안정성 곡선·순위 역전 확률 계산기를 보여 주는 웹 화면으로도 확인할 수 있습니다.
+골든셋 질문이 몇 개면 한국어 RAG 리더보드의 순위를 믿을 수 있는지 측정한 저장소입니다. 공개 데이터셋 [allganize/RAG-Evaluation-Dataset-KO](https://huggingface.co/datasets/allganize/RAG-Evaluation-Dataset-KO)에 담긴 RAG 시스템 23개의 질문 300개별 정답 여부를 그대로 쓰고, 질문 집합을 부트스트랩해 질문 수에 따라 순위가 얼마나 흔들리는지 계산했습니다. 결과는 리더보드·안정성 곡선·순위 역전 확률 계산기를 보여 주는 웹 화면(로컬 실행)으로도 확인할 수 있습니다.
 
 리더보드 표의 숫자 차이만으로는 그 차이가 질문을 다시 뽑아도 유지될지 알 수 없습니다. 같은 질문으로 두 시스템을 채점하면 한쪽만 맞힌 질문이 몇 개인지(불일치율)가 순위의 흔들림을 결정하는데, 리더보드에는 이 값이 보이지 않습니다. 이 저장소는 그 값을 계산해 "이 두 시스템을 가르려면 질문이 몇 개 필요한가"에 답합니다.
 
@@ -35,7 +35,7 @@
 | 계산·통계 | ![NumPy](https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white) ![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?logo=scipy&logoColor=white) |
 | 시각화 | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C) ![SVG](https://img.shields.io/badge/SVG-FFB13B?logo=svg&logoColor=black) |
 | 데모 | ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white) |
-| 검색(하네스) | ![Kiwi](https://img.shields.io/badge/Kiwi-5B6770) ![BM25](https://img.shields.io/badge/BM25-scipy.sparse-5B6770) ![sentence-transformers](https://img.shields.io/badge/sentence--transformers-5B6770) |
+| 검색(하네스 구성 요소, 대표 실험에는 미사용) | ![Kiwi](https://img.shields.io/badge/Kiwi-5B6770) ![BM25](https://img.shields.io/badge/BM25-scipy.sparse-5B6770) ![sentence-transformers](https://img.shields.io/badge/sentence--transformers-5B6770) |
 | 코드 품질 | ![pytest](https://img.shields.io/badge/pytest-0A9EDC?logo=pytest&logoColor=white) ![Ruff](https://img.shields.io/badge/Ruff-D7FF64?logo=ruff&logoColor=black) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white) |
 
 ## 실행 방법
@@ -112,6 +112,8 @@ flip_probability(n=300, gap=0.01, discordance=0.05)
 | medical | Alli (claude3-opus) | 0.900 | 0.78 · Alli (claude3.5-sonnet) 0.10 | 0.674 |
 | law | Alli (claude3.5-sonnet) | 0.767 | 0.39 · OpenAI Assistant (gpt-4-turbo) 0.28 | 0.831 |
 | commerce | Upstage (gpt-4-turbo) | 0.817 | 0.53 · Alli (claude3.5-sonnet) 0.24 | 0.679 |
+
+전체 300문항에 그 도메인 60문항이 포함되어 있으므로, 표의 tau는 도메인을 뺀 나머지 순위와의 상관이 아니라 부분과 전체의 상관입니다.
 
 도메인 1위는 다섯 도메인 중 세 곳에서 전체 1위와 같고, 의료와 커머스에서 다릅니다. 법률(0.39)과 커머스(0.53)는 60문항을 다시 뽑았을 때 같은 시스템이 1위가 될 확률이 절반 안팎이라, 도메인 1위가 바뀐다고 말할 근거로는 약합니다.
 

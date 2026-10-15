@@ -127,7 +127,7 @@
 
 ## 5. 도메인별 (각 60문항)
 
-도메인 안에서의 1위와, 도메인 순위와 전체 순위의 Kendall tau입니다. '1위 확률'은 도메인 60문항을 복원추출했을 때 각 시스템이 1위가 되는 비율(공동 1위는 나눔)입니다. 원자료: `rank_stability/domain_rank_corr.csv`, `rank_stability/domain_best_share.csv`, `rank_stability/curve_domain.csv`
+도메인 안에서의 1위와, 도메인 순위와 전체 순위의 Kendall tau입니다. 전체 300문항에 그 도메인 60문항이 포함되어 있어, 이 tau는 부분과 전체의 상관입니다. '1위 확률'은 도메인 60문항을 복원추출했을 때 각 시스템이 1위가 되는 비율(공동 1위는 나눔)입니다. 원자료: `rank_stability/domain_rank_corr.csv`, `rank_stability/domain_best_share.csv`, `rank_stability/curve_domain.csv`
 
 | 도메인 | 1위(동률 포함) | 1위 정확도 | 전체 순위와 tau | 1위 확률 상위 3 (n=60) | tau (n=60 재추출) |
 |---|---|---|---|---|---|
