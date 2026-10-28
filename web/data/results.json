@@ -30,7 +30,7 @@
    60
   ],
   "command": "rag-eval rankstab --data data/raw/rag_evaluation_result.csv --n-boot 10000 --seed 0",
-  "generated": "2026-10-03 19:47"
+  "generated": "2026-10-28 12:25"
  },
  "domains": [
   "finance",

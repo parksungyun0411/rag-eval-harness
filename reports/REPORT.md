@@ -1,6 +1,6 @@
 # 한국어 RAG 리더보드 순위 안정성 — 실험 보고서
 
-생성: 2026-10-03 19:47 · `rag_eval.leaderboard_experiment` 가 자동 생성 (숫자를 손으로 적지 않음)
+생성: 2026-10-28 12:25 · `rag_eval.leaderboard_experiment` 가 자동 생성 (숫자를 손으로 적지 않음)
 
 ## 재현 정보
 
@@ -75,27 +75,27 @@
 | 순위 | 위 | 아래 | 정확도 차 | 불일치율 | 위만/아래만 | McNemar p | 검정력 50%: 격자(≤300) | 검정력 50%: 정확해 | 검정력 50%: 정규 근사 | 검정력 80%: 정규 근사 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1-2 | Alli (claude3.5-sonnet) | Alli (claude3-opus) | 0.010 | 0.050 | 9/6 | 0.6072 | >300 | 2000 | 1917 | 3917 |
-| 2-3 | Alli (claude3-opus) | Alli (gpt-4o) | 0.053 | 0.100 | 23/7 | 0.0052 | 200 | 143 | 131 | 268 |
-| 3-4 | Alli (gpt-4o) | Alli (gpt-4) | 0.007 | 0.120 | 19/17 | 0.8679 | >300 | 10513 | 10368 | 21184 |
-| 4-5 | Alli (gpt-4) | Alli (gpt-4-turbo) | 0.003 | 0.130 | 20/19 | 1.0000 | >300 | >20000 | 44941 | 91824 |
-| 5-6 | Alli (gpt-4-turbo) | Alli (alpha-ko-202411-32B) | 0.003 | 0.150 | 23/22 | 1.0000 | >300 | >20000 | 51856 | 105952 |
+| 2-3 | Alli (claude3-opus) | Alli (gpt-4o) | 0.053 | 0.100 | 23/7 | 0.0052 | 200 | 143 | 132 | 269 |
+| 3-4 | Alli (gpt-4o) | Alli (gpt-4) | 0.007 | 0.120 | 19/17 | 0.8679 | >300 | 10513 | 10369 | 21185 |
+| 4-5 | Alli (gpt-4) | Alli (gpt-4-turbo) | 0.003 | 0.130 | 20/19 | 1.0000 | >300 | >20000 | 44942 | 91825 |
+| 5-6 | Alli (gpt-4-turbo) | Alli (alpha-ko-202411-32B) | 0.003 | 0.150 | 23/22 | 1.0000 | >300 | >20000 | 51856 | 105953 |
 | 6-7 | Alli (alpha-ko-202411-32B) | Alli (gpt-4o-mini) | 0.007 | 0.133 | 21/19 | 0.8746 | >300 | 11666 | 11521 | 23539 |
-| 7-8 | Alli (gpt-4o-mini) | Upstage (gpt-4-turbo) | 0.020 | 0.267 | 43/37 | 0.5764 | >300 | 2606 | 2557 | 5225 |
-| 8-9 | Upstage (gpt-4-turbo) | OpenAI Assistant (gpt-4-turbo) | 0.010 | 0.190 | 30/27 | 0.7914 | >300 | 7393 | 7295 | 14905 |
+| 7-8 | Alli (gpt-4o-mini) | Upstage (gpt-4-turbo) | 0.020 | 0.267 | 43/37 | 0.5764 | >300 | 2606 | 2558 | 5225 |
+| 8-9 | Upstage (gpt-4-turbo) | OpenAI Assistant (gpt-4-turbo) | 0.010 | 0.190 | 30/27 | 0.7914 | >300 | 7393 | 7295 | 14906 |
 | 9-10 | OpenAI Assistant (gpt-4-turbo) | OpenAI Assistant (gpt-4) | 0.027 | 0.180 | 31/23 | 0.3409 | >300 | 1003 | 969 | 1979 |
-| 10-11 | OpenAI Assistant (gpt-4) | Upstage (gpt-4) | 0.007 | 0.160 | 25/23 | 0.8854 | >300 | 13972 | 13825 | 28248 |
-| 11-12 | Upstage (gpt-4) | Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro) | 0.027 | 0.347 | 56/48 | 0.4926 | >300 | 1907 | 1869 | 3818 |
+| 10-11 | OpenAI Assistant (gpt-4) | Upstage (gpt-4) | 0.007 | 0.160 | 25/23 | 0.8854 | >300 | 13972 | 13826 | 28249 |
+| 11-12 | Upstage (gpt-4) | Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro) | 0.027 | 0.347 | 56/48 | 0.4926 | >300 | 1907 | 1869 | 3819 |
 | 12-13 | Alli (Llama-3-Alpha-Ko-8B-Instruct-Pro) | Alli (KONI-Llama3-8B-Instruct) | 0.027 | 0.180 | 31/23 | 0.3409 | >300 | 1003 | 969 | 1979 |
-| 13-14 | Alli (KONI-Llama3-8B-Instruct) | Upstage (solar) | 0.013 | 0.340 | 53/49 | 0.7666 | >300 | 7418 | 7343 | 15003 |
-| 14-15 | Upstage (solar) | Langchain (gpt-4-turbo) | 0.023 | 0.263 | 43/36 | 0.4999 | >300 | 1896 | 1854 | 3788 |
-| 15-16 | Langchain (gpt-4-turbo) | Cohere (command-r-plus) | 0.057 | 0.297 | 53/36 | 0.0893 | >300 | 368 | 351 | 717 |
-| 16-17 | Cohere (command-r-plus) | Cohere (command-r) | 0.003 | 0.157 | 24/23 | 1.0000 | >300 | >20000 | 54161 | 110661 |
-| 17-18 | Cohere (command-r) | Upstage (gpt-3.5-turbo) | 0.027 | 0.273 | 45/37 | 0.4397 | >300 | 1510 | 1473 | 3009 |
-| 18-19 | Upstage (gpt-3.5-turbo) | Alli (Llama-3-Alpha-Ko-8B-Instruct) | 0.007 | 0.387 | 59/57 | 0.9261 | >300 | >20000 | 33417 | 68277 |
-| 19-20 | Alli (Llama-3-Alpha-Ko-8B-Instruct) | Langchain (gpt-3.5-turbo) | 0.123 | 0.443 | 85/48 | 0.0017 | 150 | 117 | 108 | 221 |
-| 20-21 | Langchain (gpt-3.5-turbo) | Anything LLM (claude3-opus) | 0.063 | 0.403 | 70/51 | 0.1014 | >300 | 399 | 382 | 781 |
-| 21-22 | Anything LLM (claude3-opus) | Anything LLM (gpt-4-turbo) | 0.040 | 0.147 | 28/16 | 0.0961 | >300 | 369 | 348 | 712 |
-| 22-23 | Anything LLM (gpt-4-turbo) | Anything LLM (gpt-3.5-turbo) | 0.133 | 0.200 | 50/10 | <0.0001 | 50 | 44 | 39 | 80 |
+| 13-14 | Alli (KONI-Llama3-8B-Instruct) | Upstage (solar) | 0.013 | 0.340 | 53/49 | 0.7666 | >300 | 7418 | 7343 | 15004 |
+| 14-15 | Upstage (solar) | Langchain (gpt-4-turbo) | 0.023 | 0.263 | 43/36 | 0.4999 | >300 | 1896 | 1855 | 3789 |
+| 15-16 | Langchain (gpt-4-turbo) | Cohere (command-r-plus) | 0.057 | 0.297 | 53/36 | 0.0893 | >300 | 368 | 352 | 718 |
+| 16-17 | Cohere (command-r-plus) | Cohere (command-r) | 0.003 | 0.157 | 24/23 | 1.0000 | >300 | >20000 | 54161 | 110662 |
+| 17-18 | Cohere (command-r) | Upstage (gpt-3.5-turbo) | 0.027 | 0.273 | 45/37 | 0.4397 | >300 | 1510 | 1473 | 3010 |
+| 18-19 | Upstage (gpt-3.5-turbo) | Alli (Llama-3-Alpha-Ko-8B-Instruct) | 0.007 | 0.387 | 59/57 | 0.9261 | >300 | >20000 | 33417 | 68278 |
+| 19-20 | Alli (Llama-3-Alpha-Ko-8B-Instruct) | Langchain (gpt-3.5-turbo) | 0.123 | 0.443 | 85/48 | 0.0017 | 150 | 117 | 109 | 221 |
+| 20-21 | Langchain (gpt-3.5-turbo) | Anything LLM (claude3-opus) | 0.063 | 0.403 | 70/51 | 0.1014 | >300 | 399 | 383 | 782 |
+| 21-22 | Anything LLM (claude3-opus) | Anything LLM (gpt-4-turbo) | 0.040 | 0.147 | 28/16 | 0.0961 | >300 | 369 | 349 | 712 |
+| 22-23 | Anything LLM (gpt-4-turbo) | Anything LLM (gpt-3.5-turbo) | 0.133 | 0.200 | 50/10 | <0.0001 | 50 | 44 | 40 | 81 |
 
 ![pairs](rank_stability/pairs_n_required.png)
 

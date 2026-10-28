@@ -472,8 +472,12 @@ def _render_report(cm, lb_rows, overall, pairs, approx, domain_curves, corr_rows
                 "<0.0001" if pr["mcnemar_p"] < 1e-4 else _f(pr["mcnemar_p"], 4),
                 str(pr["n_sim_grid"]) if pr["n_sim_grid"] is not None else f">{Q}",
                 str(pr["n_exact"]) if pr["n_exact"] is not None else ">20000",
-                f"{pr['n_normal']:.0f}" if math.isfinite(pr["n_normal"]) else "—",
-                f"{pr['n_power80_normal']:.0f}" if math.isfinite(pr["n_power80_normal"]) else "—",
+                str(math.ceil(pr["n_normal"])) if math.isfinite(pr["n_normal"]) else "—",
+                (
+                    str(math.ceil(pr["n_power80_normal"]))
+                    if math.isfinite(pr["n_power80_normal"])
+                    else "—"
+                ),
             ]
         )
     p += [
